@@ -8,8 +8,8 @@ var closebtn = document.getElementById("closeBtn");
 var boxModal = document.querySelector(".box-info");
 var bookmarks = [];
 var fake;
-if (localStorage.getItem("data") != null) {
-  bookmarks = JSON.parse(localStorage.getItem("data"));
+if (localStorage.getItem("bookmarkers") != null) {
+  bookmarks = JSON.parse(localStorage.getItem("bookmarkers"));
   showData();
 }
 function addbookmark() {
@@ -22,7 +22,7 @@ function addbookmark() {
       url: siteurl.value,
     };
     bookmarks.push(bookmark);
-    localStorage.setItem("data", JSON.stringify(bookmarks));
+    localStorage.setItem("bookmarkers", JSON.stringify(bookmarks));
     showData();
     clear();
     sitename.classList.remove("is-valid");
@@ -54,7 +54,7 @@ function showData() {
 }
 function deletebookmark(index) {
   bookmarks.splice(index, 1);
-  localStorage.setItem("data", JSON.stringify(bookmarks));
+  localStorage.setItem("bookmarkers", JSON.stringify(bookmarks));
   showData();
 }
 function clear() {
@@ -75,7 +75,7 @@ function editdata() {
   ) {
     bookmarks[fake].name = sitename.value;
     bookmarks[fake].url = siteurl.value;
-    localStorage.setItem("data", JSON.stringify(bookmarks));
+    localStorage.setItem("bookmarkers", JSON.stringify(bookmarks));
     showData();
     clear();
     submitbtn.style.display = "inline-block";
